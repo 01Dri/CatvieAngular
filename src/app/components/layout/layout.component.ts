@@ -9,7 +9,7 @@ import { Route, Router } from '@angular/router';
 })
 export class LayoutComponent {
 
-  title = 'Catvie';
+  title = 'Catvie Films';
   movies: any[] = [];
 
 
