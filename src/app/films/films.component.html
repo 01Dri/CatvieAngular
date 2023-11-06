@@ -1,6 +1,8 @@
 <div class="movie-list">
     <div *ngFor="let movie of movies" class="movie-card">
-      <img [src]="movie.url" [alt]="movie.title">
+      <a [routerLink]="['/result']">
+        <img [src]="movie.url" [alt]="movie.title">
+      </a>
       <h2>{{ movie.title }}</h2>
       <p>Avaliação do público: {{ movie.average_rating_audience }}/10</p>
       <p>Avaliação dos criticos: {{ movie.average_rating_critic }}/10</p>

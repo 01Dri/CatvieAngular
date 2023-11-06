@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +9,12 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 export class AppComponent  {
   title = 'Catvie';
   searchValue!: string;
-  constructor(private http: HttpClient, private active: ActivatedRoute, private rout: Router) {}
+  constructor( private rout: Router) {}
 
   search() {
-    const searchText = this.searchValue.trim();
-    this.http.get(`http://localhost:8080/film/v1/findByTitle/${searchText}`)
-    .subscribe(data => {
-        this.rout.navigate(['/result'], {queryParams: {data: JSON.stringify(data)}})
-      })
+    const title = this.searchValue.trim();
+      this.rout.navigate(['/result'], { queryParams: { title}});
+        
+      }
     }
-  }
+  
