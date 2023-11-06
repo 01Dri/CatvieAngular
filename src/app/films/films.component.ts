@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Route, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  selector: 'app-films',
+  templateUrl: './films.component.html',
+  styleUrls: ['./films.component.css']
 })
-export class LayoutComponent {
+export class FilmsComponent {
 
   title = 'Catvie Films';
   movies: any[] = [];
@@ -20,3 +19,4 @@ export class LayoutComponent {
     });
   }
 }
+

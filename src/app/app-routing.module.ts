@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ResultsComponent } from './components/results/results.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { FilmsComponent } from './films/films.component';
+import { FilmSearchComponent } from './film-search/film-search.component';
 
 const routes: Routes = [
-  { path: 'results' , component: ResultsComponent },
-  { path: 'layout' , component: LayoutComponent }
+  { path: 'films' , component: FilmsComponent },
+  { path: 'result' , component: FilmSearchComponent },
+
+
+
 ];
 
 @NgModule({
