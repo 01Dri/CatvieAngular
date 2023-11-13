@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FilmsComponent } from './films/films.component';
 import { FilmSearchComponent } from './film-search/film-search.component';
+import { RegisterScreenComponent } from './register-screen/register-screen.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FilmSearchComponent } from './film-search/film-search.component';
     AppComponent,
     FilmsComponent,
     FilmSearchComponent,
+    RegisterScreenComponent,
   ],
   imports: [
     BrowserModule,
