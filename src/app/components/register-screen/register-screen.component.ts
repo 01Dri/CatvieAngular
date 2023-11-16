@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RegisterDTO } from '../registerDto/RegisterDTO';
-import { UserRole } from '../enums/RoleEnums';
+import { RegisterDTO } from '../../entities/registerDto/RegisterDTO';
+import { UserRole } from '../../entities/enums/RoleEnums';
 import { animate } from '@angular/animations';
 import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register-screen',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 export class RegisterScreenComponent {
 
   user = {
-    firstname: '',
+    firstname:  '',
     lastname: '',
     email: '', 
     password: '', 
@@ -21,7 +22,11 @@ export class RegisterScreenComponent {
     role: ''
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private titleService: Title) {}
+  ngOnInit() {
+    this.titleService.setTitle('Cadastra-se | Catvie')
+  }
+
   onSubmit() {
   
     const userRegister = new RegisterDTO(
@@ -32,18 +37,11 @@ export class RegisterScreenComponent {
       this.user.token,
       UserRole.USER
     );
-    const observable: Observable<any> = this.http.post('http://localhost:8080/auth/v1/register', userRegister);
-    observable.subscribe({
-      next: ({status, data}) => {
-        console.log('Status: ', status);
-        console.log('Corpo: ', data)
-      },
-      error: (error) => {
-        console.log('Error: ', error);
-      }, 
-      complete: () => {
-      }
-    });
+
+    this.http.post('http://localhost:8080/auth/v1/register', userRegister)
+    .subscribe((data: any)=> {
+      console.log(data)
+    })
   }
 
 }

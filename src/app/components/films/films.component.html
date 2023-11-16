@@ -1,6 +1,6 @@
 <div class="movie-list">
     <div *ngFor="let movie of movies" class="movie-card">
-      <a [routerLink]="['/result']">
+      <a [routerLink]="['/result']" [queryParams]="{ title: movie.title}">
         <img [src]="movie.url" [alt]="movie.title">
       </a>
       <h2>{{ movie.title }}</h2>

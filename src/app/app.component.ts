@@ -9,7 +9,12 @@ import {Router } from '@angular/router';
 export class AppComponent  {
   title = 'Catvie';
   searchValue!: string;
+  movies: any[] = [];
+  topFilms: any[] = []; 
   constructor( private rout: Router) {}
+
+  ngOnInit() {
+  }
 
   search() {
     const title = this.searchValue.trim();

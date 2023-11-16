@@ -1,0 +1,25 @@
+<!-- A estrutura geral do popup -->
+<div class="overlay">
+    <div class="login-popup">
+      <div class="login-container">
+        <h2 class="login-header">Login | Catvie</h2>
+        <form>
+          <div class="form-group">
+            <label for="username" class="form-label">Email</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Digite seu usuário">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            <a [routerLink]="['/register']">
+                <button type="button" class="btn btn-secondary">Cadastrar</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
