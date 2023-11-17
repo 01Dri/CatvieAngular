@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RegisterDTO } from '../../entities/registerDto/RegisterDTO';
 import { UserRole } from '../../entities/enums/RoleEnums';
-import { animate } from '@angular/animations';
-import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-screen',
@@ -22,7 +21,7 @@ export class RegisterScreenComponent {
     role: ''
   };
 
-  constructor(private http: HttpClient, private titleService: Title) {}
+  constructor(private http: HttpClient, private titleService: Title, private router: Router) {}
   ngOnInit() {
     this.titleService.setTitle('Cadastra-se | Catvie')
   }
@@ -41,7 +40,18 @@ export class RegisterScreenComponent {
     this.http.post('http://localhost:8080/api/auth/v1/register', userRegister)
     .subscribe((data: any)=> {
       console.log(data)
+      if (data.email === this.user.email) {
+        this.router.navigate(["/login"])
+      }
     })
   }
 
+  loginWithGitHub() {
+
+    window.location.href = 'http://localhost:8080/oauth2/authorization/github'
+
+  }
+
+  
 }
+

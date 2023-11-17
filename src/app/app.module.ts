@@ -9,7 +9,7 @@ import { FilmsComponent } from './components/films/films.component';
 import { FilmSearchComponent } from './components/film-search/film-search.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { LoginscreenComponent } from './components/loginscreen/loginscreen.component';
-import { ErrorHandlerService } from './auth/ErrorHandlerServuce';
+
 
 
 @NgModule({
@@ -27,8 +27,6 @@ import { ErrorHandlerService } from './auth/ErrorHandlerServuce';
     FormsModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: ErrorHandlerService}
-
   ],
   bootstrap: [AppComponent]
 })

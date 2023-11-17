@@ -17,7 +17,9 @@
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
         </div>
-    
         <button type="submit" [disabled]="!registrationForm.valid">Cadastrar</button>
     </form>
+    <div class="github-auth">
+        <button (click)="loginWithGitHub()">Cadastrar com GitHub</button>
+    </div>
 </div>
