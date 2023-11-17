@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { FilmsComponent } from './components/films/films.component';
 import { FilmSearchComponent } from './components/film-search/film-search.component';
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { LoginscreenComponent } from './components/loginscreen/loginscreen.component';
+import { ErrorHandlerService } from './auth/ErrorHandlerServuce';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { LoginscreenComponent } from './components/loginscreen/loginscreen.compo
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: ErrorHandlerService}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

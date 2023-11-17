@@ -16,7 +16,7 @@ export class FilmSearchComponent {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
       this.nameMovie = params.get('title');
-      this.http.get(`http://localhost:8080/film/v1/findByTitle/${this.nameMovie}`)
+      this.http.get(`http://localhost:8080/api/film/v1/findByTitle/${this.nameMovie}`)
       .subscribe((data: any) => {
          this.film = data
          this.titleService.setTitle(data.title + ' - Catvie');

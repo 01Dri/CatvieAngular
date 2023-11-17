@@ -18,7 +18,7 @@ export class FilmsComponent {
 
   ngOnInit() {
     this.titleService.setTitle("Todos os filmes | Catvie")
-    this.http.get('http://localhost:8080/film/v1/findAll')
+    this.http.get('http://localhost:8080/api/film/v1/findAll')
     .subscribe((data: any) => {
       this.movies = data;
     });

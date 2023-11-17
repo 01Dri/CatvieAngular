@@ -38,7 +38,7 @@ export class RegisterScreenComponent {
       UserRole.USER
     );
 
-    this.http.post('http://localhost:8080/auth/v1/register', userRegister)
+    this.http.post('http://localhost:8080/api/auth/v1/register', userRegister)
     .subscribe((data: any)=> {
       console.log(data)
     })
