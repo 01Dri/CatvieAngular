@@ -30,7 +30,7 @@ input {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #5c665c;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -43,3 +43,19 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+.register-button {
+    background-color: rgb(62, 78, 102);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.register-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+

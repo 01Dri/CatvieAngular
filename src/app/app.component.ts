@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {Router } from '@angular/router';
-import { AuthService } from './auth/AuthService';
+import { AuthServiceService } from './services/auth/auth-service.service';
+import { TokenResponseDTO } from './entities/token-dto/TokenResponseDTO';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,12 @@ export class AppComponent  {
   searchValue!: string;
   movies: any[] = [];
   topFilms: any[] = []; 
-  token: string = '';
 
-  constructor( private rout: Router,private authService: AuthService) {}
+  constructor( private rout: Router,private authService: AuthServiceService) {}
 
   ngOnInit() {
-    if (!this.authService.isUserLoggedin()) {
+    const token = this.authService.getAuthToken();
+    if (this.authService.verifyTokenIsNull(token)) {
       this.rout.navigate(['/login']);
     }
   }
@@ -26,7 +27,6 @@ export class AppComponent  {
   search() {
     const title = this.searchValue.trim();
       this.rout.navigate(['/result'], { queryParams: { title}});
-        
       }
     }
   

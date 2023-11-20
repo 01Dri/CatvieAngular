@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
+import { FILM_ENDPOINTS } from 'src/app/services/film-services/constants/ENDPOINTS';
 
 @Component({
   selector: 'app-film-search',
@@ -12,21 +14,17 @@ export class FilmSearchComponent {
   nameMovie: string = '';
   film: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private titleService: Title) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private titleService: Title, private authService: AuthServiceService) {}
+  
   ngOnInit() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("authToken")
-    });
+    console.log(this.authService.getAuthToken())
     this.route.queryParamMap.subscribe(params => {
       this.nameMovie = params.get('title')!;
-      this.http.get(`http://localhost:8080/api/film/v1/findByTitle/${this.nameMovie}`, {headers})
-      .subscribe((data: any) => {
-         this.film = data
-         this.titleService.setTitle(data.title + ' - Catvie');
+      this.http.get<any>(FILM_ENDPOINTS.FIND_BY_TITLE + this.nameMovie).subscribe((response) => {
+        console.log(response)
+        this.film = response;
       })
-      
-    })
+    }
+    )
   }
-
 }

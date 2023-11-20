@@ -34,7 +34,7 @@ export class RegisterScreenComponent {
       this.user.email,
       this.user.password,
       this.user.token,
-      UserRole.USER
+      UserRole.ADMIN
     );
 
     this.http.post('http://localhost:8080/api/auth/v1/register', userRegister)

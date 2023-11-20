@@ -1,8 +1,8 @@
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { tap } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
+import { FILM_ENDPOINTS } from 'src/app/services/film-services/constants/ENDPOINTS';
 
 @Component({
   selector: 'app-films',
@@ -13,19 +13,13 @@ export class FilmsComponent {
 
   title = 'Catvie Films';
   movies: any[] = [];
-  constructor(private http: HttpClient, private router: Router, private titleService: Title) {}
-
+  constructor(private titleService: Title, private tokenService: AuthServiceService, private http: HttpClient) {}
 
   ngOnInit() {
-    const token = localStorage.getItem("authToken");
-    this.titleService.setTitle("Todos os filmes | Catvie")
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + token
-    });
-    this.http.get('http://localhost:8080/api/film/v1/findAll', { headers: headers})
-    .subscribe((data: any) => {
-      this.movies = data;
+    this.http.get<any>(FILM_ENDPOINTS.FIND_ALL).subscribe((response) => {
+      console.log(response)
+      this.movies = response;
     })
+    }
   }
-}
 

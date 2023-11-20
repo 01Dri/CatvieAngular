@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { LoginDTO } from 'src/app/entities/loginDTO/LoginDTO';
+import { TokenResponseDTO } from 'src/app/entities/token-dto/TokenResponseDTO';
 
 @Component({
   selector: 'app-loginscreen',
@@ -10,7 +11,7 @@ import { LoginDTO } from 'src/app/entities/loginDTO/LoginDTO';
 })
 export class LoginscreenComponent {
 
-  token = '';
+  token: string = '';
 
   user = {
     email: '', 
@@ -26,9 +27,9 @@ export class LoginscreenComponent {
       this.user.email,
       this.user.password
     );
-    this.http.post('http://localhost:8080/api/auth/v1/login', userLogin)
-    .subscribe((data: any) => {
-      this.token = data.token
+    this.http.post<TokenResponseDTO>('http://localhost:8080/api/auth/v1/login', userLogin)
+    .subscribe((data) => {
+      this.token = (data.token);
       if (this.token != null) {
         localStorage.setItem('authToken', this.token);
         this.router.navigate(["/"])
