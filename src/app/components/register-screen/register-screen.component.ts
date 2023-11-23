@@ -37,7 +37,7 @@ export class RegisterScreenComponent {
       UserRole.ADMIN
     );
 
-    this.http.post('http://localhost:8080/api/auth/v1/register', userRegister)
+    this.http.post('api/auth/v1/register', userRegister)
     .subscribe((data: any)=> {
       console.log(data)
       if (data.email === this.user.email) {

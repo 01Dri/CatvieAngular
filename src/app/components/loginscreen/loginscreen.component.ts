@@ -27,7 +27,7 @@ export class LoginscreenComponent {
       this.user.email,
       this.user.password
     );
-    this.http.post<TokenResponseDTO>('http://localhost:8080/api/auth/v1/login', userLogin)
+    this.http.post<TokenResponseDTO>('api/auth/v1/login', userLogin)
     .subscribe((data) => {
       this.token = (data.token);
       if (this.token != null) {

@@ -19,7 +19,10 @@ export class FilmsComponent {
     this.http.get<any>(FILM_ENDPOINTS.FIND_ALL).subscribe((response) => {
       console.log(response)
       this.movies = response;
-    })
+    },
+    (error => {
+      console.log("Erro: " + JSON.stringify(error));
+    }))
     }
   }
 
