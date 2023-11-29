@@ -13,7 +13,7 @@ export class AppComponent  {
   constructor( private rout: Router,private authService: AuthServiceService) {}
 
   ngOnInit() {
-    this.authService.removeAuthToken();
+    this.authService.removeAuthToken(); // For tests !!!
     const token = this.authService.getAuthToken();
     if (this.authService.verifyTokenIsNull(token)) {
       this.rout.navigate(['/login']);

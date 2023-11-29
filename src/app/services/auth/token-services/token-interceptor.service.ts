@@ -15,7 +15,6 @@ export class TokenInterceptorService implements HttpInterceptor {
     if (!req.url.includes('api/auth/v1')) {
       if (!req.headers.has("Authorization")) {
         const token = this.authService.getAuthToken();
-        
 
         // Configuração das opções de requisição
         const authReq = req.clone({
