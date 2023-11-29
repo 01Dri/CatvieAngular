@@ -29,10 +29,10 @@ export class RegisterScreenComponent {
   onSubmit() {
   
     const userRegister = new RegisterDTO(
-      this.user.firstname,
-      this.user.lastname,
-      this.user.email,
-      this.user.password,
+      this.user.firstname.toLowerCase(),
+      this.user.lastname.toLowerCase(),
+      this.user.email.toLowerCase(),
+      this.user.password.toLowerCase(),
       this.user.token,
       UserRole.ADMIN
     );

@@ -10,7 +10,10 @@ import { FilmSearchComponent } from './components/film-search/film-search.compon
 import { RegisterScreenComponent } from './components/register-screen/register-screen.component';
 import { LoginscreenComponent } from './components/loginscreen/loginscreen.component';
 import { TokenInterceptorService } from './services/auth/token-services/token-interceptor.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { SharedModule } from './shared/shared.module';
+import { ProfileScreenComponent } from './components/profile-screen/profile-screen.component';
 
 
 @NgModule({
@@ -20,12 +23,16 @@ import { TokenInterceptorService } from './services/auth/token-services/token-in
     FilmSearchComponent,
     RegisterScreenComponent,
     LoginscreenComponent,
+    ProfileScreenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    AppMaterialModule,
+    SharedModule,
   ],
   providers: [
     

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { LoginDTO } from 'src/app/entities/loginDTO/LoginDTO';
 import { TokenResponseDTO } from 'src/app/entities/token-dto/TokenResponseDTO';
+import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 
 @Component({
   selector: 'app-loginscreen',
@@ -20,7 +21,7 @@ export class LoginscreenComponent {
 
 
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private authService: AuthServiceService) {}
 
   login() {
     const userLogin = new LoginDTO(
@@ -31,7 +32,7 @@ export class LoginscreenComponent {
     .subscribe((data) => {
       this.token = (data.token);
       if (this.token != null) {
-        localStorage.setItem('authToken', this.token);
+        this.authService.setTokenInCookies(this.token);
         this.router.navigate(["/"])
       }
     })

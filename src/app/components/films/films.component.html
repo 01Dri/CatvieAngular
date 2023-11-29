@@ -1,11 +1,17 @@
-<div class="movie-list">
-    <div *ngFor="let movie of movies" class="movie-card">
-      <a [routerLink]="['/result']" [queryParams]="{ title: movie.title}">
-        <img [src]="movie.url" [alt]="movie.title">
+<div  class="movie-list" *ngIf="films$ | async as movies; else loading">
+    <div *ngFor="let film of movies" class="movie-card">
+      <a [routerLink]="['/result']" [queryParams]="{ title: film.title}">
+        <img [src]="film.url" [alt]="film.title">
       </a>
-      <h2>{{ movie.title }}</h2>
-      <p>Avaliação do público: {{ movie.average_rating_audience }}/10</p>
-      <p>Avaliação dos criticos: {{ movie.average_rating_critic }}/10</p>
+      <h2>{{ film.title }}</h2>
+      <p>Avaliação do público: {{ film.average_rating_audience }}/10</p>
+      <p>Avaliação dos criticos: {{ film.average_rating_critic }}/10</p>
     </div>
   </div>
-  
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
